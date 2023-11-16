@@ -1,0 +1,29 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+struct point
+{
+	float x;
+	float y;
+	float length(point pt) {
+		return sqrt(pow(pt.x - x, 2.0f) + pow(pt.y - y, 2.0f));
+	}
+};
+
+int main() 
+{
+	setlocale(LC_ALL, "ukr");
+	float p, a_side, b_side, c_side, W, R_op;
+	point point_a = { 0, 0 };
+	point point_b = { 6, 5 };
+	point point_c = { -6, 7 };
+	a_side = point_a.length(point_b);
+	b_side = point_b.length(point_c);
+	c_side = point_c.length(point_a);
+	p = (a_side + b_side + c_side) / 2;
+	W = (2 * sqrt(a_side * b_side * p * (p - c_side))) / (a_side + b_side);
+	R_op = (a_side * b_side * c_side) / (4 * sqrt(p * (p - a_side) * (p - b_side) * (p - c_side)));
+	cout << "Довжина бісектриси: " << W << endl;
+	cout << "Радіус описаного кола: " << R_op << endl;
+	return 0;
